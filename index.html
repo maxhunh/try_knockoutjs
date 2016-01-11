@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Demo KnockoutJS</title>
+        <!-- Include lib of KnockoutJS
+             Read more: http://knockoutjs.com/downloads/index.html -->
+        <script type='text/javascript' src='knockout-3.4.0.js'></script>
+    </head>
+    <body>
+        <div class='liveExample'>
+            <!-- Input value -->
+            <p>First name: <input data-bind='value: firstName' /></p>
+            <p>Middle name: <input data-bind='value: middleName'></p>
+            <p>Last name: <input data-bind='value: lastName' /></p>
+            <!-- Output value -->
+            <h2>Hello, <span data-bind='text: fullName'> </span>!</h2>
+        </div>
+        <script type="text/javascript">
+            // Main function
+            var myViewModel = function(first, middle, last) {
+                // Define var to get value of input data
+                // Observables: http://knockoutjs.com/documentation/observables.html
+                this.firstName = ko.observable(first);
+                this.lastName = ko.observable(last);
+                this.middleName = ko.observable(middle);
+
+                // Process inputs data and show in output
+                // Computed: http://knockoutjs.com/documentation/computedObservables.html
+                this.fullName = ko.computed(function() {
+                    return this.firstName() + " " +this.middleName()+" "+ this.lastName();
+                }, this);
+            };
+
+            ko.applyBindings(new myViewModel("Quach", "Huynh", "Duc")); // Call main function
+        </script>
+</body>
+</html>
