@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Demo KnockoutJS</title>
+        <!-- Include lib of KnockoutJS
+             Read more: http://knockoutjs.com/downloads/index.html -->
+        <script type='text/javascript' src='knockout-3.4.0.js'></script>
+    </head>
+    <body>
+        <button data-bind="click: findMe" >Find Me !</button>
+        click count <span data-bind="text: countMe, style: {color : countMe() % 2 == 0 ? 'red' : 'blue'}"></span>
+        <br/>
+        <br/>
+        <div data-bind="visible: showMe">
+            <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSwbWRn3wSB80he4lnP9wqOdvlPhyCYFvO1tadREqGzsWBQPRLQ" alt="" data-bind="event: { mouseover: enableAbout ,mouseout: disableAbout }">
+            <br/>
+            <div data-bind="visible: aboutGhost">I am ghost :D</div>
+        </div>
+        <script type="text/javascript">
+            var handleClick = function() {
+                this.showMe     = ko.observable(false);
+                this.aboutGhost = ko.observable(false);
+                this.countMe    = ko.observable(1);
+
+                countClick      = 1;
+                this.findMe = function() {
+                    if (countClick % 2 == 0 ) {
+                        this.showMe(false);
+                    } else{
+                        this.showMe(true);
+                    };
+                    this.countMe(countClick += 1);
+                };
+
+                this.enableAbout = function() {
+                    this.aboutGhost(true);
+                }
+
+                this.disableAbout = function() {
+                    this.aboutGhost(false);
+                }
+            };
+            ko.applyBindings(new handleClick());
+        </script>
+    </body>
+</html>
