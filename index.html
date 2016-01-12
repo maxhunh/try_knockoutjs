@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <title>Demo KnockoutJS</title>
+        <!-- Include lib of KnockoutJS
+        Read more: http://knockoutjs.com/downloads/index.html -->
+        <script type='text/javascript' src='knockout-3.4.0.js'></script>
+    </head>
+    <body>
+        <p>Name: <input data-bind="hasFocus: editingName" /></p>
+ 
+        <div data-bind="visible: editingName">You're editing the name</div>
+        <!-- state(enable, disable) inverse with binding method, call binding method when click -->
+        <button data-bind="enable: !editingName(), click:function() { editingName(true) }">Edit name</button>
+
+        <script type="text/javascript">
+            var viewModel = {
+                editingName: ko.observable()
+            };
+            ko.applyBindings(viewModel);
+            // create new binding hasFocus for input element
+            ko.bindingHandlers.hasFocus = {
+                // init states of input
+                init: function(element, inValue) {
+                    $(element).focus(function() {
+                        inValue(true);
+                    });
+                    $(element).blur(function() {
+                        inValue(false);
+                    });
+                },
+                // change states when binding method be call
+                update: function(element, inValue) {
+                    if (ko.unwrap(inValue))
+                        element.focus();
+                    else
+                        element.blur();
+                }
+            };
+        </script>
+    </body>
+</html>
