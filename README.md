@@ -39,6 +39,13 @@
 * [observable](https://github.com/quach-duc-mulodo/try_knockoutjs/tree/observable)
 * [binding](https://github.com/quach-duc-mulodo/try_knockoutjs/tree/binding)
 * [custom-binding](https://github.com/quach-duc-mulodo/try_knockoutjs/tree/custom-binding)
-* [components](#)
-* [other](#)
+* [components](https://github.com/quach-duc-mulodo/try_knockoutjs/tree/component)
+
+## Other
+
+#### [Plugin](https://github.com/knockout/knockout/wiki/Plugins)
+
+#### [Tutorial](http://learn.knockoutjs.com/#/?tutorial=intro)
+
+#### [Example](http://knockoutjs.com/examples/) 
 
